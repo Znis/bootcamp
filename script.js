@@ -3,6 +3,7 @@ document.getElementById('salaryForm').addEventListener('submit', function(e) {
     var yearsOfExperience = parseFloat(document.getElementById('yearsOfExperience').value);
     
     if (!isNaN(yearsOfExperience)) {
+    document.getElementById('predictButton').disabled = true;
       const data = {
         "years_of_experience": yearsOfExperience
       };
@@ -26,7 +27,10 @@ document.getElementById('salaryForm').addEventListener('submit', function(e) {
       .catch(error => {
           console.error('Error:', error);
           document.getElementById('result').innerHTML = 'An error occurred while processing your request.';
-      });
+      }) 
+        .finally(() => {
+                document.getElementById('predictButton').disabled = false;
+            });
   } else {
       document.getElementById('result').innerHTML = 'Please enter a valid number for years of experience.';
   }
