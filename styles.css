@@ -48,7 +48,6 @@ body {
     cursor: pointer;
   }
   button:disabled {
-    color: #666;
     opacity: 0.5;
   }
   
