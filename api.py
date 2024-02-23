@@ -1,8 +1,17 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from joblib import load
 
 app = FastAPI()
 
+# Allowing CORS for frontend access
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 # load the model
@@ -14,5 +23,9 @@ async def predict_salary(years_of_experience: float):
     years_of_exp_input = years_of_experience
 
     # model prediction
-    predicted_salary_linear = best_model.predict([[years_of_exp_input]])
-    return {"salary": round(predicted_salary_linear[0],2)}
+    try:
+        predicted_salary_linear = best_model.predict([[years_of_exp_input]])
+        return {"salary": round(predicted_salary_linear[0],2)}
+    except:
+        return {"salary" : "0"}
+    
