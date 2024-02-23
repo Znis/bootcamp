@@ -11,7 +11,7 @@ document.getElementById('salaryForm').addEventListener('submit', function(e) {
   
   function predictSalary(yearsOfExperience) {
    var result = 0.0;
-        fetch('/predict-salary/', {
+        fetch('https://bootcamp-03yf.onrender.com/predict-salary/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
