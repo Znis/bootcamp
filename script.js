@@ -22,7 +22,12 @@ document.getElementById('salaryForm').addEventListener('submit', function(e) {
           return response.json();
       })
       .then(result => {
-          document.getElementById('result').innerHTML = `Predicted Salary: Rs. ${result.salary}`;
+            const temp = parseFloat(result.salary)
+            const numberParts = temp.toFixed(2).toString().split('.');
+            const formattedIntegerPart = numberParts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            const formattedNumber = 'Rs. ' + formattedIntegerPart + '.' + numberParts[1];
+          
+          document.getElementById('result').innerHTML = `Predicted Salary: Rs. ${formattedNumber}`;
       })
       .catch(error => {
           console.error('Error:', error);
