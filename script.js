@@ -27,7 +27,7 @@ document.getElementById('salaryForm').addEventListener('submit', function(e) {
             const formattedIntegerPart = numberParts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             const formattedNumber = 'Rs. ' + formattedIntegerPart + '.' + numberParts[1];
           
-          document.getElementById('result').innerHTML = `Predicted Salary: Rs. ${formattedNumber}`;
+          document.getElementById('result').innerHTML = `Predicted Salary: ${formattedNumber}`;
       })
       .catch(error => {
           console.error('Error:', error);
