@@ -26,7 +26,7 @@ document.getElementById('salaryForm').addEventListener('submit', function(e) {
             const numberParts = temp.toFixed(2).toString().split('.');
             const formattedIntegerPart = numberParts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             const formattedNumber = 'Rs. ' + formattedIntegerPart + '.' + numberParts[1];
-          
+          document.getElementById('note').style.display = 'none';
           document.getElementById('result').innerHTML = `Predicted Salary per Month: <b> ${formattedNumber} </b>`;
       })
       .catch(error => {
