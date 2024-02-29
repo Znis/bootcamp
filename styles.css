@@ -30,7 +30,7 @@ body {
   }
   
   label {
-    font-weight: bold;
+    color: #444;
   }
   
   input[type="number"] {
